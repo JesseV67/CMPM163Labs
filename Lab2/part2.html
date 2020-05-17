@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab 2: Intro to Three.js Part 2</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+		<script src="../three.js-master/build/three.js"></script>
+		<script src="../three.js-master/examples/js/loaders/GLTFLoader.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 1000);
+			var renderer = new THREE.WebGLRenderer();
+			
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+			//(Left, right, zoom)
+			camera.position.set(0, 60, 600);
+
+			var light = new THREE.PointLight(0xFFB8B8);
+
+			//Position of light, the higher the brighter
+			light.position.set(100, 1000, 100);
+			scene.add(light);
+
+			//Dog model
+			var loader = new THREE.GLTFLoader();
+			loader.load('3dModels/dog.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (-240, 50, 10);
+				gltf.scene.rotation.set (0.5, 1.6, 0);
+				gltf.scene.scale.set (1.6, 1.9, 1.3);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Chair model 1
+			loader.load('3dModels/chair.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (-248, 15, 0);
+				gltf.scene.rotation.set (0.5, 1.6, 0.);
+				gltf.scene.scale.set (60, 60, 60);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Cup model 1
+			loader.load('3dModels/cup.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (-140, 84, 0);
+				gltf.scene.rotation.set (0.5, 3, 0.);
+				gltf.scene.scale.set (4, 4, 4);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Cat model
+			loader.load('3dModels/cat.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (205, 93, 0);
+				gltf.scene.rotation.set (0.5, -1.6, 0);
+				gltf.scene.scale.set (2, 2, 2);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Chair model 2
+			loader.load('3dModels/chair.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (270, 30, 0);
+				gltf.scene.rotation.set (0.5, -1.6, 0.);
+				gltf.scene.scale.set (60, 70, 60);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Cup model 2
+			loader.load('3dModels/cup.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (180, 84, 0);
+				gltf.scene.rotation.set (0.5, 0, 0);
+				gltf.scene.scale.set (4, 4, 4);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Vase model
+			loader.load('3dModels/calla_lily_with_roses.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (0, 95, -10);
+				gltf.scene.rotation.set (0.5, 0, 0);
+				gltf.scene.scale.set (2, 2, 2);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			//Table model
+			loader.load('3dModels/squareTable.glb', function (gltf) {
+				scene.add(gltf.scene);
+				gltf.scene.position.set (10, 10, -10);
+				gltf.scene.rotation.set (0.5, 0, 0);
+				gltf.scene.scale.set(200, 100, 80);
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded' );
+			}, function (error) {
+				console.error(error);
+			});
+
+			function animate() {
+				requestAnimationFrame(animate);
+				renderer.render(scene, camera);
+			}	animate();
+		</script>
+	</body>
+</html>
