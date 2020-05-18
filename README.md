@@ -5,7 +5,7 @@
 Part 2
 ![](Lab2/Images/Lab2Part2.png)
 # Lab 3
-[Part 1 Video](https://drive.google.com/open?id=1oTUnCFbzTzYfaUWa9YLIOTEDR36yKESl]
+[Part 1 Video](https://drive.google.com/open?id=1oTUnCFbzTzYfaUWa9YLIOTEDR36yKESl)
 # Lab 4
 
 # Lab 5
