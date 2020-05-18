@@ -11,83 +11,151 @@
 	<body>
 		<script src="../three.js-master/build/three.js"></script>
 		<script>
-		// setup the scene
-		var scene = new THREE.Scene();
-		var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-		var renderer = new THREE.WebGLRenderer();
-		renderer.setSize(window.innerWidth, window.innerHeight);
-		document.body.appendChild(renderer.domElement);
-		camera.position.z = 10;
+			// setup the scene
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+			camera.position.z = 10;
 
-		// Cube 1 setup
-		// Red
-		var geometry1 = new THREE.BoxGeometry();
-		var material1 = new THREE.MeshPhongMaterial( { color: 0xFF0000, shininess: 20, flatShading: true } );
-		var cube1 = new THREE.Mesh(geometry1, material1);
-		cube1.position.set(0,5,0)
+// Cube 1 setup
+// Red
+			var geometryR = new THREE.BoxGeometry();
+			var materialR = new THREE.MeshPhongMaterial( { color: 0xFF0000, shininess: 20, flatShading: true } );
+			var cubeR = new THREE.Mesh(geometryR, materialR);
+			cubeR.position.set(0,5,0)
 
-		// Cube 2 setup
-		// Purple
-		var geometry2 = new THREE.BoxGeometry();
-		var material2 = new THREE.MeshPhongMaterial( { color: 0x800080, shininess: 20, flatShading: true } );
-		var cube2 = new THREE.Mesh(geometry2, material2);
-		cube2.position.set(-5,3,0)
+// Cube 2 setup
+// Purple
+			var geometryP = new THREE.BoxGeometry();
+			var materialP = new THREE.MeshPhongMaterial( { color: 0x800080, shininess: 20, flatShading: true } );
+			var cubeP = new THREE.Mesh(geometryP, materialP);
+			cubeP.position.set(-5,3,0)
 
-		// Cube 3 setup
-		// Turquoise
-		var geometry3 = new THREE.BoxGeometry();
-		var material3 = new THREE.MeshPhongMaterial( { color: 0x40E0D0, shininess: 20, flatShading: true } );
-		var cube3 = new THREE.Mesh(geometry3, material3);
-		cube3.position.set(-5,-3,0)
+// Cube 3 setup
+// Turquoise
+			var geometryT = new THREE.BoxGeometry();
+			var materialT = new THREE.MeshPhongMaterial( { color: 0x40E0D0, shininess: 20, flatShading: true } );
+			var cubeT = new THREE.Mesh(geometryT, materialT);
+			cubeT.position.set(-5,-3,0)
 
-		// Cube 4 setup
-		// Silver
-		var geometry4 = new THREE.BoxGeometry();
-		var material4 = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, shininess: 20, flatShading: true } );
-		var cube4 = new THREE.Mesh(geometry4, material4);
-		cube4.position.set(0,-5,0)
+// Cube 4 setup
+// Silver
+			var geometryS = new THREE.BoxGeometry();
+			var materialS = new THREE.MeshPhongMaterial( { color: 0xC0C0C0, shininess: 20, flatShading: true } );
+			var cubeS = new THREE.Mesh(geometryS, materialS);
+			cubeS.position.set(0,-5,0)
 
-		// Cube 5 setup
-		// Green
-		var geometry5 = new THREE.BoxGeometry();
-		var material5 = new THREE.MeshPhongMaterial( { color: 0x008000, shininess: 20, flatShading: true } );
-		var cube5 = new THREE.Mesh(geometry5, material5);
-		cube5.position.set(5,-3,0)
+// Cube 5 setup
+// Green
+			var geometryG = new THREE.BoxGeometry();
+			var materialG = new THREE.MeshPhongMaterial( { color: 0x008000, shininess: 20, flatShading: true } );
+			var cubeG = new THREE.Mesh(geometryG, materialG);
+			cubeG.position.set(5,-3,0)
 
-		// Cube 6 setup
-		// Yellow
-		var geometry6 = new THREE.BoxGeometry();
-		var material6 = new THREE.MeshPhongMaterial( { color: 0xFFDF00, shininess: 20, flatShading: true } );
-		var cube6 = new THREE.Mesh(geometry6, material6);
-		cube6.position.set(5,3,0)
+// Cube 6 setup
+// Yellow
+			var geometryY = new THREE.BoxGeometry();
+			var materialY = new THREE.MeshPhongMaterial( { color: 0xFFDF00, shininess: 20, flatShading: true } );
+			var cubeY = new THREE.Mesh(geometryY, materialY);
+			cubeY.position.set(5,3,0)
 
-		// Cube 7 setup
-		// Blue
-		var geometry7 = new THREE.BoxGeometry();
-		var material7 = new THREE.MeshPhongMaterial( { color: 0x2454f2, shininess: 20, flatShading: true } );
-		var cube7 = new THREE.Mesh(geometry7, material7);
-		cube7.position.set(0,0,0)
+// Cube 7 setup
+// Blue
+			var geometryB = new THREE.BoxGeometry();
+			var materialB = new THREE.MeshPhongMaterial( { color: 0x2454f2, shininess: 20, flatShading: true } );
+			var cubeB = new THREE.Mesh(geometryB, materialB);
+			cubeB.position.set(0,0,0)
+// Adding each cude to the scene
+			scene.add(cubeR, cubeP, cubeT, cubeS, cubeG, cubeY, cubeB);
 
-		scene.add(cube1, cube2, cube3, cube4, cube5, cube6, cube7);
+// Adding the light
+			var light = new THREE.PointLight(0xffffff, 1, 1000);
+			light.position.set(0, 0, 0);
+			scene.add(light);
 
-		// add the light
-		var light = new THREE.PointLight(0xffffff, 1, 1000);
-		light.position.set(0, 0, 0);
-		scene.add(light);
+// Loaded by Three.js's FileLoader
+			THREE.Cache.enabled = true;
+			var count = 0;
+			var loader = new THREE.FileLoader();
+			var fshader, vshader;
 
-		function animate() {
-			requestAnimationFrame(animate);
-			geometry1.rotateX(0.01); geometry1.rotateY(0.035); geometry1.rotateZ(0.022);
-			geometry2.rotateX(0.01); geometry2.rotateY(0.035); geometry2.rotateZ(0.022);
-			geometry3.rotateX(0.01); geometry3.rotateY(0.035); geometry3.rotateZ(0.022);
-			geometry4.rotateX(0.01); geometry4.rotateY(0.035); geometry4.rotateZ(0.022);
-			geometry5.rotateX(0.01); geometry5.rotateY(0.035); geometry5.rotateZ(0.022);
-			geometry6.rotateX(0.01); geometry6.rotateY(0.035); geometry6.rotateZ(0.022);
-			geometry7.rotateX(0.01); geometry7.rotateY(0.035); geometry7.rotateZ(0.022);
+// Loads in the vertex shader
+			loader.load('shaders/vertexShader.vert',
+			// onLoad callback
+			function (data) {
+				console.log(data); // output the text to the console
+				vshader = data;
+				count += 1;
+				addCoolCube(); // we will write this method
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
 
-			renderer.render(scene, camera);
-		} animate();
+// Loads in the fragment shader
+			loader.load('shaders/fragmentShader.frag',
+			// onLoad callback
+			function (data) {
+				console.log(data); // output the text to the console
+				fshader = data;
+				count += 1;
+				addCoolCube(); // we will write this method
+			},
+			// onProgress callback
+			function (xhr) {
+				console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+			},
+			// onError callback
+			function (err) {
+				console.error('An error happened');
+			});
 
+			var geometry1, material1, mesh1;
+
+// Cool Cube function
+			function addCoolCube() {
+				if(count == 2) {
+					let uniforms = {
+						colorB: {type: 'vec3', value: new THREE.Color(0xACB6E5)},
+						colorA: {type: 'vec3', value: new THREE.Color(0x74ebd5)}
+					};
+
+					geometry1 = new THREE.BoxGeometry(1, 1, 1);
+					material1 = new THREE.ShaderMaterial({
+						uniforms: uniforms,
+						fragmentShader: fshader, vertexShader: vshader,	precision: "mediump"
+					});
+
+					mesh1 = new THREE.Mesh(geometry1, material1);
+					mesh1.position.x = 2;
+					scene.add(mesh1);
+				}	
+			}
+
+			function animate() {
+				requestAnimationFrame(animate);
+				geometryR.rotateX(0.01); geometryR.rotateY(0.035); geometryR.rotateZ(0.022);
+				geometryP.rotateX(0.01); geometryP.rotateY(0.035); geometryP.rotateZ(0.022);
+				geometryT.rotateX(0.01); geometryT.rotateY(0.035); geometryT.rotateZ(0.022);
+				geometryS.rotateX(0.01); geometryS.rotateY(0.035); geometryS.rotateZ(0.022);
+				geometryG.rotateX(0.01); geometryG.rotateY(0.035); geometryG.rotateZ(0.022);
+				geometryY.rotateX(0.01); geometryY.rotateY(0.035); geometryY.rotateZ(0.022);
+				geometryB.rotateX(0.01); geometryB.rotateY(0.035); geometryB.rotateZ(0.022);
+
+				if(geometry1) {
+					geometry1.rotateX(0.01);
+					geometry1.rotateY(0.01);
+				}
+
+				renderer.render(scene, camera);
+			} animate();
 		</script>
 	</body>
 </html>
