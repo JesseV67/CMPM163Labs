@@ -14,7 +14,9 @@ PS If you've played any of the recent 3D Sonic the Hedgehog games, you'd underst
 [Lab 4 Video]
 
 24a.
+
 24b.
+
 24c. The color sampled is light grey.
 # Lab 5
 
