@@ -11,7 +11,7 @@ I'll explain the spinning cubes formed in a circle (Red, Yellow, Green, Silver, 
 With the two rectangles in the background, each cube share the same vertex shader but have their own fragmentshader so either cube interpolates its own colors. The toughest part was figuring out which parts I had to disect so I can easily have these two have their own values in the program.
 PS If you've played any of the recent 3D Sonic the Hedgehog games, you'd understand what I made in this lab.
 # Lab 4
-
+[Lab 4 Video]
 # Lab 5
 
 # Lab 6
