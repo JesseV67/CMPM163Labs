@@ -12,6 +12,10 @@ With the two rectangles in the background, each cube share the same vertex shade
 PS If you've played any of the recent 3D Sonic the Hedgehog games, you'd understand what I made in this lab.
 # Lab 4
 [Lab 4 Video]
+
+24a.
+24b.
+24c. The color sampled is light grey.
 # Lab 5
 
 # Lab 6

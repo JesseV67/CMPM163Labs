@@ -11,32 +11,178 @@
 	<body>
 		<script src="../three.js-master/build/three.js"></script>
 		<script>
-			// setup the scene
-      			var scene = new THREE.Scene();
-      			var camera = new THREE.PerspectiveCamera(75, 
-window.innerWidth/window.innerHeight, 0.1, 1000);
-      			var renderer = new THREE.WebGLRenderer();
-      			renderer.setSize(window.innerWidth, window.innerHeight);
-      			document.body.appendChild(renderer.domElement);
-			camera.position.z = 5;
-			
-			// setup the cube
-var geometry = new THREE.BoxGeometry();
-      			var material = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-      			var cube = new THREE.Mesh(geometry, material);
-     			scene.add(cube);
+// setup the scene
+		var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.body.appendChild(renderer.domElement);
+		camera.position.set(0,0,6);
 
-			// add the light
-			var light = new THREE.PointLight(0xffffff, 1, 1000);
-			light.position.set(10, 10, 10);
-			scene.add(light);
+// add the light
+		var light = new THREE.PointLight(0xffffff, 1, 1000);
+		light.position.set(100, 100, 100);
+		scene.add(light);
 
-			function animate() {
+// setup the first cube
+		var geometry = new THREE.BoxGeometry();
+		var texture = THREE.ImageUtils.loadTexture("Textures/161b.jpg");
+		var normMap = THREE.ImageUtils.loadTexture("Textures/161_norm.jpg");
+		var material = new THREE.MeshPhongMaterial({map: texture, normalMap: normMap});
+		var cube = new THREE.Mesh(geometry, material);
+		cube.position.set(-2,0,0);
+		scene.add(cube);
+
+// adding the second cube
+		geometry2 = new THREE.BoxGeometry();
+		texture2 = THREE.ImageUtils.loadTexture("Textures/161b.jpg");
+		material2 = new THREE.MeshPhongMaterial( { map: texture2 });
+		var cube2 = new THREE.Mesh(geometry2, material2);
+		cube2.position.set(0,0,0);
+		scene.add(cube2);
+
+// adding the third cube (forbidden dorito)
+		geometry3 = new THREE.BoxGeometry();
+		texture3 = THREE.ImageUtils.loadTexture("Textures/Lava3.png");
+		var normMap3 = THREE.ImageUtils.loadTexture("Textures/164_norm.jpg");
+		var material3 = new THREE.MeshPhongMaterial({map: texture3, normalMap: normMap3});
+		var cube3 = new THREE.Mesh(geometry3, material3);
+		cube3.position.set(2,0,0);
+		scene.add(cube3);
+
+// enable shaders
+		THREE.Cache.enabled = true;
+		var count = 0;
+		var count4 =0;
+		var loader = new THREE.FileLoader();
+		var fshader, vshader;
+
+// loads vertex shader
+      	loader.load('Shaders/vertexShader.vert',
+      	// onLoad callback
+      	function (data) {
+      		console.log(data); // output the text to the console
+      		vshader = data;
+      		count += 1;
+      		count4 += 1;
+      		addTextureShaderCube(); // we will write this method
+      		addTextureShaderCube4();
+		},
+		// onProgress callback
+		function (xhr) {
+			console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+		},
+		// onError callback
+		function (err) {
+			console.error('An error happened');
+		});
+
+// loads fragment shader
+		loader.load('Shaders/fragmentShader.frag',
+		// onLoad callback
+		function (data) {
+			console.log(data); // output the text to the console
+			fshader = data;
+			count += 1;
+			addTextureShaderCube(); // we will write this method
+		},
+		// onProgress callback
+		function (xhr) {
+			console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+		},
+		// onError callback
+		function (err) {
+			console.error('An error happened');
+		});
+
+// declare addTextureShaderCube
+		var geometry1, material1, mesh1;
+
+		function addTextureShaderCube() {
+			if(count == 2) {
+				var uniforms = {texture1: { type: "t",
+				value: THREE.ImageUtils.loadTexture("Textures/Diamond.jpg")}};
+
+				geometry1 = new THREE.BoxGeometry(1, 1, 1);
+				material1 =  new THREE.ShaderMaterial({
+					uniforms: uniforms,
+					fragmentShader: fshader,
+              		vertexShader: vshader,
+              		precision: "mediump"});
+				mesh1 = new THREE.Mesh(geometry1, material1);
+				mesh1.position.set(-1,2,0);
+				scene.add(mesh1);
+			}
+		}
+
+// loads fragment shader 4
+		loader.load('Shaders/fragmentShader4.frag',
+      	// onLoad callback
+      	function (data) {
+      		console.log(data); // output the text to the console
+      		fshader = data;
+      		count4 += 1;
+      		addTextureShaderCube4(); // we will write this method
+      	},
+		// onProgress callback
+		function (xhr) {
+			console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+		},
+		// onError callback
+		function (err) {
+			console.error('An error happened');
+		});
+
+// declare addTextureShaderCube 4 (aka cube 4)
+		var geometry4, material4, mesh4;
+		function addTextureShaderCube4() {
+			if(count4 == 2) {
+				var uniforms = {texture1: { type: "t",
+				value: THREE.ImageUtils.loadTexture("Textures/176.jpg")}};
+
+				geometry4 = new THREE.BoxGeometry(1, 1, 1);
+				material4 =  new THREE.ShaderMaterial({
+					uniforms: uniforms,
+					fragmentShader: fshader,
+              		vertexShader: vshader,
+              		precision: "mediump"});
+				mesh4 = new THREE.Mesh(geometry4, material4);
+				mesh4.position.set(1,2,0);
+				scene.add(mesh4);
+			}
+		}
+
+// speed of light
+			var delta = -1;
+// Animate cubes
+		function animate() {
+			if (light.position.x < -30.0) {
+				delta = 1;
+			} else if (light.position.x > 30.0) {
+					delta = -1;
+				} light.position.x += delta;
+/*
+			// cube rotation
+			if (mesh1) {
+				geometry1.rotateX(0.01); geometry1.rotateY(0.01); geometry1.rotateZ(0.01);
+			}
+			if (mesh4) {
+				geometry4.rotateX(0.01); geometry4.rotateY(0.01); geometry4.rotateZ(0.01);
+			}
+			if (cube) {
+				geometry.rotateX(0.01); geometry.rotateY(0.01); geometry.rotateZ(0.01);
+			}
+
+			if (cube2) {
+				geometry2.rotateX(0.01); geometry2.rotateY(0.01); geometry2.rotateZ(0.01);
+			}
+			if (cube3) {
+				geometry3.rotateX(0.01); geometry3.rotateY(0.01); geometry3.rotateZ(0.01);
+			}
+*/
 				requestAnimationFrame(animate);
 				renderer.render(scene, camera);
-			}
-			animate();
-
+		} animate();
 
 		</script>
 	</body>

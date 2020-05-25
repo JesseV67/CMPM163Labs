@@ -127,7 +127,9 @@
 					geometry1 = new THREE.BoxGeometry(7, 2, 5);
 					material1 = new THREE.ShaderMaterial({
 						uniforms: uniforms,
-						fragmentShader: fshader, vertexShader: vshader, precision: "mediump"
+						fragmentShader: fshader,
+						vertexShader: vshader,
+						precision: "mediump"
 					});
 
 					mesh1 = new THREE.Mesh(geometry1, material1);
@@ -166,7 +168,9 @@
 					geometry2 = new THREE.BoxGeometry(7, 2, 5);
 					material2 = new THREE.ShaderMaterial({
 						uniforms: uniforms,
-						fragmentShader: fshader, vertexShader: vshader, precision: "mediump"
+						fragmentShader: fshader,
+						vertexShader: vshader,
+						precision: "mediump"
 					});
 					mesh2 = new THREE.Mesh(geometry2, material2);
 					mesh2.position.set(5,0,-5);
