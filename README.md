@@ -19,7 +19,8 @@ PS If you've played any of the recent 3D Sonic the Hedgehog games, you'd underst
 
 24c. The color sampled is light grey.
 # Lab 5
-
+[Lab 5a Video](https://drive.google.com/open?id=1wN0F1oQ_j38mWtWJcOVcEENxq5vmLe2l)
+[Lab 5b Video](https://drive.google.com/open?id=1RueDBh1-xFSxVHlbZoG6MmqLV8jsJ9k-)
 # Lab 6
 
 # Lab 7
