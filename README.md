@@ -26,6 +26,7 @@ Part 2a
 Part 2b
 
 [Lab 5b Part 1 Video](https://drive.google.com/open?id=1RueDBh1-xFSxVHlbZoG6MmqLV8jsJ9k-)
+
 [Lab 5b Part 2 Video]()
 # Lab 6
 
