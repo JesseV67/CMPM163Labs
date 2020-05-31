@@ -19,15 +19,11 @@ PS If you've played any of the recent 3D Sonic the Hedgehog games, you'd underst
 
 24c. The color sampled is light grey.
 # Lab 5
-Part 2a
+[Lab 5 Video](https://drive.google.com/open?id=12KbhnCMbFF5P51YR48iQaES8cvABsJjr)
 
-[Lab 5a Video](https://drive.google.com/open?id=1wN0F1oQ_j38mWtWJcOVcEENxq5vmLe2l)
+For the particles in his lab, I attached them to player kart. I got help from a tutorial to make flame particles but, halfway through it, I stopped since I wanted a more pixelated fire instead of a real one. I made the particle an 'Edge' shape that the utilized both color and size over lifetime to show the base of the flame expanding.
 
-Part 2b
-
-[Lab 5b Part 1 Video](https://drive.google.com/open?id=1RueDBh1-xFSxVHlbZoG6MmqLV8jsJ9k-)
-
-[Lab 5b Part 2 Video]()
+As for the track, I shifted two track tiles so it connected to the other track to make it longer. From there, I added obstacles and two ramps where you must jump through a donut to continue with the track. I was able to make the checkpoints into donuts by putting the checkpoints inside the donuts and making the donuts large enough so players can drive through them.
 # Lab 6
 
 # Lab 7
