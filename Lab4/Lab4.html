@@ -137,15 +137,15 @@
 		var geometry4, material4, mesh4;
 		function addTextureShaderCube4() {
 			if(count4 == 2) {
-				var uniforms = {texture1: { type: "t",
-				value: THREE.ImageUtils.loadTexture("Textures/176.jpg")}};
-
+				let uniforms = { texture1: { type: "t",
+      					value: THREE.ImageUtils.loadTexture("textures/Tnt.PNG")}};
 				geometry4 = new THREE.BoxGeometry(1, 1, 1);
 				material4 =  new THREE.ShaderMaterial({
 					uniforms: uniforms,
 					fragmentShader: fshader,
               		vertexShader: vshader,
-              		precision: "mediump"});
+              		precision: "mediump"
+              	});
 				mesh4 = new THREE.Mesh(geometry4, material4);
 				mesh4.position.set(1,2,0);
 				scene.add(mesh4);
@@ -161,7 +161,7 @@
 			} else if (light.position.x > 30.0) {
 					delta = -1;
 				} light.position.x += delta;
-/*
+
 			// cube rotation
 			if (mesh1) {
 				geometry1.rotateX(0.01); geometry1.rotateY(0.01); geometry1.rotateZ(0.01);
@@ -179,7 +179,7 @@
 			if (cube3) {
 				geometry3.rotateX(0.01); geometry3.rotateY(0.01); geometry3.rotateZ(0.01);
 			}
-*/
+
 				requestAnimationFrame(animate);
 				renderer.render(scene, camera);
 		} animate();

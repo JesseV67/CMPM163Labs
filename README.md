@@ -11,11 +11,15 @@ I'll explain the spinning cubes formed in a circle (Red, Yellow, Green, Silver, 
 With the two rectangles in the background, each cube share the same vertex shader but have their own fragmentshader so either cube interpolates its own colors. The toughest part was figuring out which parts I had to disect so I can easily have these two have their own values in the program.
 PS If you've played any of the recent 3D Sonic the Hedgehog games, you'd understand what I made in this lab.
 # Lab 4
-[Lab 4 Video]
+[Lab 4 Video](https://drive.google.com/open?id=1I-rBztRGOa850nWonMzcfIPfjrts3HZ7)
 
-24a.
+I will be talking about the bottom 3 cubes first. For the left cube, I made a rocky texture with texture 161 including its normal map. For the center cube, I made another rocky texture similar to the left only without a map. The right cube I made out of a lava texture I found on the internet accompanied with texture 164's normal map.
 
-24b.
+The top 2 cubes are made utilizing a fragment a vertex shader. The left one is a Diamond block from Minecraft while the right is a tiled tnt block from the aformentioned Minecraft. To make the tnt cube tile'd, I doubled vec2 it scales down the tile. From there, I positioned each vec2 by (0,0), (0,1), (1,0), and (1,1) to space the tiles into 4 spots. 
+
+24a. The formula is x = 8u - u
+
+24b. The formula is y = 8 - (8 - 8v)
 
 24c. The color sampled is light grey.
 # Lab 5
