@@ -30,6 +30,9 @@ For the particles in his lab, I attached them to player kart. I got help from a 
 As for the track, I shifted two track tiles so it connected to the other track to make it longer. From there, I added obstacles and two ramps where you must jump through a donut to continue with the track. I was able to make the checkpoints into donuts by putting the checkpoints inside the donuts and making the donuts large enough so players can drive through them.
 # Lab 6
 
-# Lab 7
+Screenshot to my Shadertoy project: ![](Lab6/ShaderToySC.png)
 
-# Lab 8
+Link to my Shadertoy: https://www.shadertoy.com/view/wdSfzh
+
+Link to a Shadertoy project that looked pretty dang neat: https://www.shadertoy.com/view/wdSfzh
+(Warning: lower volume/bass, it gets pretty loud)
