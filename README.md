@@ -32,7 +32,7 @@ As for the track, I shifted two track tiles so it connected to the other track t
 
 Screenshot to my Shadertoy project: ![](Lab6/ShaderToySC.png)
 
-Link to my Shadertoy: https://www.shadertoy.com/view/wdSfzh
+Link to my Shadertoy: https://www.shadertoy.com/view/3tXcDn#
 
 Link to a Shadertoy project that looked pretty dang neat: https://www.shadertoy.com/view/wdSfzh
 
