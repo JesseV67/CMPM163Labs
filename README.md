@@ -35,4 +35,5 @@ Screenshot to my Shadertoy project: ![](Lab6/ShaderToySC.png)
 Link to my Shadertoy: https://www.shadertoy.com/view/wdSfzh
 
 Link to a Shadertoy project that looked pretty dang neat: https://www.shadertoy.com/view/wdSfzh
+
 (Warning: lower volume/bass, it gets pretty loud)
