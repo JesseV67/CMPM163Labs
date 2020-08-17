@@ -1,1 +1,19 @@
+# CMPM 163 Final Project: *Interactive Audio Visualizer*
+[Final Project video](https://drive.google.com/file/d/15v5pZkdw3m5IdWlD7eeN7F0sN3MGWN87/view?usp=sharing)
+# Introduction
+My name is Jesse Villa and I created this Interactive Audio Visualizer as my final project for CMPM 163. So let's see if I can explain how it works.
+# Process
+For starters, audio is composed of multiple frequencies (bass, kick, synth, etc.) and hertz. Since audio consists of thousands and thousands of hertz, the AudioSpectrum script extracts the audio from a provided audio source and reduces them into a set amount of samples (snapshots of the audio signal). In this case, my script turns the thousands of hertz into 512 samples. From there, it is divided into 8 bandwidths that make up the 512 audio samples. Also included in the AudioSpectrum script is a buffer that allows for the audio to smoother audio visuals so it doesn't look jittery.
 
+Now that the audio's samples and bandwidth are extracted, it's time to visualize it. In the scene, there are cubes lined up along the walls. Once the scene is played, they respond to the music with each bar having a different response. That's because, in the AudioBars script, a Vector 3 is utilized to increase and decrease the Y scale. You can also see the floor bump up and down because it too is also responding to the script. On top of that, the color that the bars represent also change in intensity based on the audio's scale. On top of the bars, the light on the roof of the scene also responds to the audio in the AudioLights script. This script responds to the frequency bandwidth and, based on the intensity implemented and bandwidth chosen, will react brighter.
+
+In both the ColorLightsChanger script and the ColorBallsChanger script, they each utilize a color lerping value where it "linearly interpolates between colors a and b by t" which means it transitions from one color to another and back again. To control the transition speed, a Mathf.PingPong value is used based on the time at the start of the scene and speed implemented on the component. This will allow for a timed transition for each color back and forth.
+
+For the final script in the project, we have the FlyCamera script where it allows for the camera to navigate across the scene. Utilizing the WASD and Arrow keys on top of mouse movement, this script makes it possible for the camera in the scene to both move and look freely. This script was a bit of a challenge to handle since I was able to get the camera to move but it would go through objects. Luckily, I found a way through it by giving the camera itself collision detection. This along with every object in the scene having collision detection made it so you can't phase through the play area.
+
+As you play the scene, you'll notice that some spheres move and bounce. This is because some of the spheres were given Bounce physics so it response to the laws of gravity... well, some of it. In the case of most of the spheres, they don't stop bouncing with bounciness set to 1 (aka forever) and bounce combine set to maximum. On top of that, the spheres also have collision detection so bumping into them with your camera makes them move! I wasn't kidding when I said this audio visualizer was interactive.
+
+Finally, you'll also notice the only non-moving sphere reflects the entire environment like a mirror. This is because that sphere utilizes a lighting feature called a reflection probe. It captures its surroundings in a spherical view and is then stored in a Cubemap that can be used for any objects with reflective materials. From there, it reflects everything around its Cubemap in realtime, frame by frame so it reflects every surface accurately.
+
+# Credits
+Thanks to Peer Play (seriously, this was a lot of help), Unity Documentation and User Manual, and the numerous forums and videos I had to scower through to understand and get answers for the creation of this project.
